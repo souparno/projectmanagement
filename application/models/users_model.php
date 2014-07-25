@@ -10,9 +10,9 @@ class Users_model extends CI_Model {
     */
 	function validate($user_name, $password)
 	{
-		$this->db->where('user_name', $user_name);
-		$this->db->where('pass_word', $password);
-		$query = $this->db->get('membership');
+		$this->db->where('username', $user_name);
+		$this->db->where('password', $password);
+		$query = $this->db->get('users');
 		
 		if($query->num_rows == 1)
 		{

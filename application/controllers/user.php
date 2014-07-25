@@ -2,6 +2,12 @@
 
 class User extends CI_Controller {
 
+    
+    function __construct() {
+        parent::__construct();
+        $this->load->model('Users_model');
+    }
+    
     /**
      * Check if the user is logged in, if he's not, 
      * send him to the login page
@@ -29,10 +35,11 @@ class User extends CI_Controller {
      */
     function validate_credentials() {
 
-        $this->load->model('Users_model');
+        
 
         $user_name = $this->input->post('user_name');
-        $password = $this->__encrip_password($this->input->post('password'));
+        //$password = $this->__encrip_password($this->input->post('password'));
+        $password=$this->input->post('password');
 
         $is_valid = $this->Users_model->validate($user_name, $password);
 
