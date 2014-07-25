@@ -42,7 +42,7 @@ class User extends CI_Controller {
                 'is_logged_in' => true
             );
             $this->session->set_userdata($data);
-            redirect('admin/products');
+            redirect('admin/projects');
         } else { // incorrect username or password
             $data['message_error'] = TRUE;
             $this->load->view('admin/login', $data);

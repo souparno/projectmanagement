@@ -64,5 +64,34 @@ $route['admin/manufacturers/(:any)'] = 'admin_manufacturers/index/$1'; //$1 = pa
 
 
 
+$route['admin/projects'] = 'admin_projects/index';
+$route['admin/projects/add'] = 'admin_projects/add';
+$route['admin/projects/update'] = 'admin_projects/update';
+$route['admin/projects/update/(:any)'] = 'admin_projects/update/$1';
+$route['admin/projects/delete/(:any)'] = 'admin_projects/delete/$1';
+//$route['admin/projects/(:any)'] = 'admin_projects/index/$1'; //$1 = page number
+
+
+$route['admin/users'] = 'admin_users/index';
+$route['admin/users/add'] = 'admin_users/add';
+$route['admin/users/update'] = 'admin_users/update';
+$route['admin/users/update/(:any)'] = 'admin_users/update/$1';
+$route['admin/users/delete/(:any)'] = 'admin_users/delete/$1';
+//$route['admin/projects/(:any)'] = 'admin_users/index/$1'; //$1 = page number
+
+$route['admin/departments'] = 'admin_departments/index';
+$route['admin/departments/add'] = 'admin_departments/add';
+$route['admin/departments/update'] = 'admin_departments/update';
+$route['admin/departments/update/(:any)'] = 'admin_departments/update/$1';
+$route['admin/departments/delete/(:any)'] = 'admin_departments/delete/$1';
+//$route['admin/projects/(:any)'] = 'admin_users/index/$1'; //$1 = page number
+
+$route['admin/contractors'] = 'admin_contractors/index';
+$route['admin/contractors/add'] = 'admin_contractors/add';
+$route['admin/contractors/update'] = 'admin_contractors/update';
+$route['admin/contractors/update/(:any)'] = 'admin_contractors/update/$1';
+$route['admin/contractors/delete/(:any)'] = 'admin_contractors/delete/$1';
+//$route['admin/projects/(:any)'] = 'admin_users/index/$1'; //$1 = page number
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -14,24 +14,25 @@
           <span class="divider">/</span>
         </li>
         <li class="active">
-          <a href="#">New</a>
+          <a href="#">Update</a>
         </li>
       </ul>
       
       <div class="page-header">
         <h2>
-          Adding <?php echo ucfirst($this->uri->segment(2));?>
+          Updating <?php echo ucfirst($this->uri->segment(2));?>
         </h2>
       </div>
 
+ 
       <?php
       //flash messages
-      if(isset($flash_message)){
-        if($flash_message == TRUE)
+      if($this->session->flashdata('flash_message')){
+        if($this->session->flashdata('flash_message') == 'updated')
         {
           echo '<div class="alert alert-success">';
             echo '<a class="close" data-dismiss="alert">×</a>';
-            echo '<strong>Well done!</strong> new manufacturer created with success.';
+            echo '<strong>Well done!</strong> manufacturer updated with success.';
           echo '</div>';       
         }else{
           echo '<div class="alert alert-error">';
@@ -48,18 +49,17 @@
 
       //form validation
       echo validation_errors();
-      
-      echo form_open('admin/manufacturers/add', $attributes);
+
+      echo form_open('admin/manufacturers/update/'.$this->uri->segment(4).'', $attributes);
       ?>
         <fieldset>
           <div class="control-group">
-            <label for="inputError" class="control-label">Name</label>
+            <label for="inputError" class="control-label">Description</label>
             <div class="controls">
-              <input type="text" id="" name="name" value="<?php echo set_value('name'); ?>" >
+              <input type="text" id="" name="name" value="<?php echo $manufacture[0]['name']; ?>" >
               <!--<span class="help-inline">Woohoo!</span>-->
             </div>
           </div>
-            
           <div class="form-actions">
             <button class="btn btn-primary" type="submit">Save changes</button>
             <button class="btn" type="reset">Cancel</button>
