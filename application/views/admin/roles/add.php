@@ -31,7 +31,7 @@
         {
           echo '<div class="alert alert-success">';
             echo '<a class="close" data-dismiss="alert">×</a>';
-            echo '<strong>Well done!</strong> new manufacturer created with success.';
+            echo '<strong>Well done!</strong> new project created with success.';
           echo '</div>';       
         }else{
           echo '<div class="alert alert-error">';
@@ -49,7 +49,7 @@
       //form validation
       echo validation_errors();
       
-      echo form_open('admin/manufacturers/add', $attributes);
+      echo form_open('admin/projects/add', $attributes);
       ?>
         <fieldset>
           <div class="control-group">
@@ -59,7 +59,45 @@
               <!--<span class="help-inline">Woohoo!</span>-->
             </div>
           </div>
-            
+          <div class="control-group">
+            <label for="inputError" class="control-label">Description</label>
+            <div class="controls">
+              <input type="text" id="" name="description" value="<?php echo set_value('description'); ?>" >
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+
+            <script>
+             $(document).ready(function(){
+                $("#datepicker").on('click',function(){
+                    console.log("hi");
+                $("#datepicker").datepicker();
+                });
+            });
+
+            </script>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Allocation Date</label>
+            <div class="controls">
+              <input type="text" id="datepicker" name="allocation_date" value="<?php echo set_value('allocation_date'); ?>" >
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Complition Date</label>
+            <div class="controls">
+              <input type="text" id="" name="complition_date" value="<?php echo set_value('complition_date'); ?>" >
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Cost</label>
+            <div class="controls">
+              <input type="text" id="" name="cost" value="<?php echo set_value('cost'); ?>" >
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+          
           <div class="form-actions">
             <button class="btn btn-primary" type="submit">Save changes</button>
             <button class="btn" type="reset">Cancel</button>
