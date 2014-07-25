@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2014 at 09:15 AM
--- Server version: 5.5.32
--- PHP Version: 5.4.19
+-- Generation Time: Jul 25, 2014 at 04:35 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_projectmanagement`
 --
-CREATE DATABASE IF NOT EXISTS `db_projectmanagement` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `db_projectmanagement`;
 
 -- --------------------------------------------------------
 
@@ -62,7 +60,70 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('e328458143330a6da8cd5f9fc115c799', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36', 1406185915, 'a:7:{s:9:"user_data";s:0:"";s:9:"user_name";s:6:"bonnie";s:12:"is_logged_in";b:1;s:20:"manufacture_selected";N;s:22:"search_string_selected";N;s:5:"order";N;s:10:"order_type";N;}');
+('91c9cf4a43fd3c4aa533fb0364e4d522', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:30.0) Gecko/20100101 Firefox/30.0', 1406297503, 'a:7:{s:9:"user_name";s:5:"admin";s:12:"is_logged_in";b:1;s:20:"manufacture_selected";N;s:22:"search_string_selected";N;s:5:"order";N;s:10:"order_type";N;s:13:"user_selected";N;}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contractor`
+--
+
+CREATE TABLE IF NOT EXISTS `contractor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `phone_number` varchar(20) DEFAULT NULL,
+  `email_address` varchar(100) DEFAULT NULL,
+  `work_experience` varchar(100) DEFAULT NULL,
+  `staff_strength` int(10) DEFAULT NULL,
+  `company_name` varchar(100) DEFAULT NULL,
+  `billing_name` varchar(100) DEFAULT NULL,
+  `billing_address` varchar(100) DEFAULT NULL,
+  `location_of_business` varchar(100) DEFAULT NULL,
+  `pan_card_number` varchar(100) DEFAULT NULL,
+  `bank_account_number` varchar(100) DEFAULT NULL,
+  `tan` varchar(100) DEFAULT NULL,
+  `govt_id_card_number` int(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `contractor`
+--
+
+INSERT INTO `contractor` (`id`, `name`, `address`, `phone_number`, `email_address`, `work_experience`, `staff_strength`, `company_name`, `billing_name`, `billing_address`, `location_of_business`, `pan_card_number`, `bank_account_number`, `tan`, `govt_id_card_number`) VALUES
+(1, 'abc', 'kolkata', '87587', 'ihfjhhj', 'jhfh', 1321, 'jkfgh', 'hgjhgj', 'hjfh', 'jhfjhf', '54365', '76476', '754', 1300);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `department`
+--
+
+CREATE TABLE IF NOT EXISTS `department` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `location` varchar(100) DEFAULT NULL,
+  `department_head` varchar(100) DEFAULT NULL,
+  `contact_number` varchar(50) DEFAULT NULL,
+  `office_number` varchar(50) DEFAULT NULL,
+  `email_address` varchar(100) DEFAULT NULL,
+  `number_of_staff` int(10) DEFAULT NULL,
+  `role` varchar(20) DEFAULT NULL,
+  `description` text,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `verified` tinyint(1) NOT NULL DEFAULT '0',
+  `remarks` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `department`
+--
+
+INSERT INTO `department` (`id`, `name`, `location`, `department_head`, `contact_number`, `office_number`, `email_address`, `number_of_staff`, `role`, `description`, `created`, `modified`, `verified`, `remarks`) VALUES
+(4, 'asdfasf', 'h', 'gkj', '123', '123', '0', 123, 'jg', '                    kjg                                                    ', NULL, NULL, 0, 'kj');
 
 -- --------------------------------------------------------
 
@@ -81,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `manufacturers` (
 --
 
 INSERT INTO `manufacturers` (`id`, `name`) VALUES
-(1, 'meme');
+(1, 'abc');
 
 -- --------------------------------------------------------
 
@@ -97,14 +158,16 @@ CREATE TABLE IF NOT EXISTS `membership` (
   `user_name` varchar(255) DEFAULT NULL,
   `pass_word` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `membership`
 --
 
 INSERT INTO `membership` (`id`, `first_name`, `last_name`, `email_addres`, `user_name`, `pass_word`) VALUES
-(1, 'bonnie', 'a', 'a@a.com', 'bonnie', 'eb5ba7c977d21014520ad3ee0432d10f');
+(1, 'bonnie', 'a', 'a@a.com', 'bonnie', 'eb5ba7c977d21014520ad3ee0432d10f'),
+(2, 'admin', 'admin', 'admin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3'),
+(3, 'a', 'b', 'admin@gmail.com', 'susho', '261aa4645b9616fd0e5bb3077fe1e332');
 
 -- --------------------------------------------------------
 
@@ -121,6 +184,104 @@ CREATE TABLE IF NOT EXISTS `products` (
   `manufacture_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project_master`
+--
+
+CREATE TABLE IF NOT EXISTS `project_master` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `user_group_id` int(11) DEFAULT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` text NOT NULL,
+  `allocation_date` text NOT NULL,
+  `complition_date` text NOT NULL,
+  `cost` int(50) NOT NULL,
+  `fund_allocation_from` text,
+  `project_execution_area` text,
+  `number_of_benificiary` int(20) DEFAULT NULL,
+  `verified` tinyint(1) DEFAULT '0',
+  `approved` tinyint(1) DEFAULT '0',
+  `closed` tinyint(1) DEFAULT '0',
+  `work_order_issue` tinyint(1) DEFAULT '0',
+  `work_order_number` int(20) DEFAULT NULL,
+  `work_order_pdf` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `project_master`
+--
+
+INSERT INTO `project_master` (`id`, `user_id`, `user_group_id`, `name`, `description`, `allocation_date`, `complition_date`, `cost`, `fund_allocation_from`, `project_execution_area`, `number_of_benificiary`, `verified`, `approved`, `closed`, `work_order_issue`, `work_order_number`, `work_order_pdf`) VALUES
+(3, NULL, NULL, 'retert', 'ertert', 'ertert', 'ertert', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, NULL, NULL, 'ree', 'deee', 'aeee', 'ceee', 200, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_group_id` int(11) unsigned DEFAULT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `first_name` varchar(100) DEFAULT NULL,
+  `last_name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user` (`username`),
+  KEY `mail` (`email`),
+  KEY `users_FKIndex1` (`user_group_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `user_group_id`, `username`, `password`, `email`, `first_name`, `last_name`) VALUES
+(15, 1, 'adfgg', '121212', 'aasfasf', 'aasfa', 'afasf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_group_permissions`
+--
+
+CREATE TABLE IF NOT EXISTS `user_group_permissions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_group_id` int(10) unsigned NOT NULL,
+  `controller` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `action` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `allowed` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1488 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_roles`
+--
+
+CREATE TABLE IF NOT EXISTS `user_roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `user_roles`
+--
+
+INSERT INTO `user_roles` (`id`, `name`) VALUES
+(1, 'Admin'),
+(2, 'Users');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
