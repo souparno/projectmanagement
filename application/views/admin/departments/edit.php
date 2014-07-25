@@ -50,13 +50,78 @@
       //form validation
       echo validation_errors();
 
-      echo form_open('admin/manufacturers/update/'.$this->uri->segment(4).'', $attributes);
+      echo form_open('admin/departments/update/'.$this->uri->segment(4).'', $attributes);
       ?>
         <fieldset>
           <div class="control-group">
+            <label for="inputError" class="control-label">Name</label>
+            <div class="controls">
+              <input type="text" id="" name="name" value="<?php echo $department[0]['name']; ?>" >
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Location</label>
+            <div class="controls">
+              <input type="text" id="" name="location" value="<?php echo $department[0]['location']; ?>" >
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Head of department</label>
+            <div class="controls">
+              <input type="text" id="" name="department_head" value="<?php echo $department[0]['department_head']; ?>" >
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Contact Number</label>
+            <div class="controls">
+              <input type="text" id="" name="contact_number" value="<?php echo $department[0]['contact_number']; ?>" >
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Office Number</label>
+            <div class="controls">
+              <input type="text" id="" name="office_number" value="<?php echo $department[0]['office_number']; ?>" >
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Email Address</label>
+            <div class="controls">
+              <input type="text" id="" name="email_address" value="<?php echo $department[0]['email_address']; ?>" >
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Number of Staff</label>
+            <div class="controls">
+              <input type="text" id="" name="number_of_staff" value="<?php echo $department[0]['number_of_staff']; ?>" >
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Role</label>
+            <div class="controls">
+              <input type="text" id="" name="role" value="<?php echo $department[0]['role']; ?>" >
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+          <div class="control-group">
             <label for="inputError" class="control-label">Description</label>
             <div class="controls">
-              <input type="text" id="" name="name" value="<?php echo $manufacture[0]['name']; ?>" >
+                <textarea id="" name="description" value="" rows="4" >
+                    <?php echo $department[0]['description']; ?>
+                </textarea>    
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Remarks</label>
+            <div class="controls">
+              <input type="text" id="" name="remarks" value="<?php echo $department[0]['remarks']; ?>" >
               <!--<span class="help-inline">Woohoo!</span>-->
             </div>
           </div>

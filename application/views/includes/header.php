@@ -11,46 +11,39 @@
                 <div class="container">
                     <a class="brand">Project Management</a>
                     <ul class="nav">
-                        <!--<li <?php
-                        if ($this->uri->segment(2) == 'products') {
+                        <li <?php
+                        if ($this->uri->segment(2) == 'roles') {
                             echo 'class="active"';
                         }
                         ?>>
-                            <a href="<?php echo base_url(); ?>admin/products">Products</a>
+                            <a href="<?php echo base_url(); ?>admin/roles">Roles</a>
                         </li>
                         <li <?php
-                        if ($this->uri->segment(2) == 'manufacturers') {
+                        if ($this->uri->segment(2) == 'projects') {
                             echo 'class="active"';
                         }
-                        ?>>
-                            <a href="<?php echo base_url(); ?>admin/manufacturers">Manufacturers</a>
-                        </li>-->
-                        <li <?php
-                            if ($this->uri->segment(2) == 'projects') {
-                                echo 'class="active"';
-                            }
                         ?>>
                             <a href="<?php echo base_url(); ?>admin/projects">Project</a>
                         </li>
                         <li <?php
-                            if ($this->uri->segment(2) == 'users') {
-                                echo 'class="active"';
-                            }
-                            ?>>
+                        if ($this->uri->segment(2) == 'users') {
+                            echo 'class="active"';
+                        }
+                        ?>>
                             <a href="<?php echo base_url(); ?>admin/users">Users</a>
                         </li>
                         <li <?php
                         if ($this->uri->segment(2) == 'departments') {
                             echo 'class="active"';
                         }
-                            ?>>
+                        ?>>
                             <a href="<?php echo base_url(); ?>admin/departments">Department</a>
                         </li>
                         <li <?php
                         if ($this->uri->segment(2) == 'contractors') {
                             echo 'class="active"';
                         }
-                            ?>>
+                        ?>>
                             <a href="<?php echo base_url(); ?>admin/contractors">Contractor</a>
                         </li>
                         <li class="dropdown">

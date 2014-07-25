@@ -28,26 +28,26 @@
             $attributes = array('class' => 'form-inline reset-margin', 'id' => 'myform');
            
             //save the columns names in a array that we will use as filter         
-            $options_manufacturers = array();    
-            foreach ($manufacturers as $array) {
+            $options_departments = array();    
+            foreach ($departments as $array) {
               foreach ($array as $key => $value) {
-                $options_manufacturers[$key] = $key;
+                $options_departments[$key] = $key;
               }
               break;
             }
 
-            echo form_open('admin/manufacturers', $attributes);
+            echo form_open('admin/departments', $attributes);
      
               echo form_label('Search:', 'search_string');
-              echo form_input('search_string', $search_string_selected);
+             # echo form_input('search_string', $search_string_selected);
 
               echo form_label('Order by:', 'order');
-              echo form_dropdown('order', $options_manufacturers, $order, 'class="span2"');
+              #echo form_dropdown('order', $options_departments, $order, 'class="span2"');
 
               $data_submit = array('name' => 'mysubmit', 'class' => 'btn btn-primary', 'value' => 'Go');
 
               $options_order_type = array('Asc' => 'Asc', 'Desc' => 'Desc');
-              echo form_dropdown('order_type', $options_order_type, $order_type_selected, 'class="span1"');
+              #echo form_dropdown('order_type', $options_order_type, $order_type_selected, 'class="span1"');
 
               echo form_submit($data_submit);
 
@@ -61,18 +61,35 @@
               <tr>
                 <th class="header">#</th>
                 <th class="yellow header headerSortDown">Name</th>
+                <th class="yellow header headerSortDown">Location</th>
+                <th class="yellow header headerSortDown">Head of Department</th>
+                <th class="yellow header headerSortDown">Contact Number</th>
+                <th class="yellow header headerSortDown">Office Number</th>
+                <th class="yellow header headerSortDown">Email</th>
+                <th class="yellow header headerSortDown">Number of Stuff</th>
+                <th class="yellow header headerSortDown">Role</th>
+                <th class="yellow header headerSortDown">Remarks</th>
               </tr>
             </thead>
             <tbody>
               <?php
-              foreach($manufacturers as $row)
+              foreach($departments as $row)
               {
                 echo '<tr>';
                 echo '<td>'.$row['id'].'</td>';
                 echo '<td>'.$row['name'].'</td>';
+                echo '<td>'.$row['location'].'</td>';
+                echo '<td>'.$row['department_head'].'</td>';
+                echo '<td>'.$row['contact_number'].'</td>';
+                echo '<td>'.$row['office_number'].'</td>';
+                echo '<td>'.$row['email_address'].'</td>';
+                echo '<td>'.$row['number_of_staff'].'</td>';
+                echo '<td>'.$row['role'].'</td>';
+                echo '<td>'.$row['description'].'</td>';
+                echo '<td>'.$row['remarks'].'</td>';
                 echo '<td class="crud-actions">
-                  <a href="'.site_url("admin").'/manufacturers/update/'.$row['id'].'" class="btn btn-info">view & edit</a>  
-                  <a href="'.site_url("admin").'/manufacturers/delete/'.$row['id'].'" class="btn btn-danger">delete</a>
+                  <a href="'.site_url("admin").'/departments/update/'.$row['id'].'" class="btn btn-info">view & edit</a>  
+                  <a href="'.site_url("admin").'/departments/delete/'.$row['id'].'" class="btn btn-danger">delete</a>
                 </td>';
                 echo '</tr>';
               }

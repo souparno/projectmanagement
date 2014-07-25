@@ -28,28 +28,28 @@
             $attributes = array('class' => 'form-inline reset-margin', 'id' => 'myform');
            
             //save the columns names in a array that we will use as filter         
-            $options_projects = array();    
-            foreach ($projects as $array) {
+            $options_roles = array();    
+            foreach ($roles as $array) {
               foreach ($array as $key => $value) {
-                $options_projects[$key] = $key;
+                $options_roles[$key] = $key;
               }
               break;
             }
 
-            echo form_open('admin/projects', $attributes);
+            echo form_open('admin/roles', $attributes);
      
               echo form_label('Search:', 'search_string');
-              echo form_input('search_string', $search_string_selected);
+             # echo form_input('search_string', $search_string_selected);
 
               echo form_label('Order by:', 'order');
-              echo form_dropdown('order', $options_projects, $order, 'class="span2"');
+              #echo form_dropdown('order', $options_projects, $order, 'class="span2"');
 
-              $data_submit = array('name' => 'mysubmit', 'class' => 'btn btn-primary', 'value' => 'Go');
+              #$data_submit = array('name' => 'mysubmit', 'class' => 'btn btn-primary', 'value' => 'Go');
 
-              $options_order_type = array('Asc' => 'Asc', 'Desc' => 'Desc');
-              echo form_dropdown('order_type', $options_order_type, $order_type_selected, 'class="span1"');
+              #$options_order_type = array('Asc' => 'Asc', 'Desc' => 'Desc');
+              #echo form_dropdown('order_type', $options_order_type, $order_type_selected, 'class="span1"');
 
-              echo form_submit($data_submit);
+              #echo form_submit($data_submit);
 
             echo form_close();
             ?>
@@ -61,26 +61,26 @@
               <tr>
                 <th class="header">#</th>
                 <th class="yellow header headerSortDown">Name</th>
-                <th class="yellow header headerSortDown">Description</th>
+<!--                <th class="yellow header headerSortDown">Description</th>
                 <th class="yellow header headerSortDown">Allocation Date</th>
                 <th class="yellow header headerSortDown">Complition Date</th>
-                <th class="yellow header headerSortDown">Cost</th>
+                <th class="yellow header headerSortDown">Cost</th>-->
               </tr>
             </thead>
             <tbody>
               <?php
-              foreach($projects as $row)
+              foreach($roles as $row)
               {
                 echo '<tr>';
                 echo '<td>'.$row['id'].'</td>';
                 echo '<td>'.$row['name'].'</td>';
-                echo '<td>'.$row['description'].'</td>';
+                /*echo '<td>'.$row['description'].'</td>';
                 echo '<td>'.$row['allocation_date'].'</td>';
                 echo '<td>'.$row['complition_date'].'</td>';
-                echo '<td>'.$row['cost'].'</td>';
+                echo '<td>'.$row['cost'].'</td>';*/
                 echo '<td class="crud-actions">
-                  <a href="'.site_url("admin").'/projects/update/'.$row['id'].'" class="btn btn-info">view & edit</a>  
-                  <a href="'.site_url("admin").'/projects/delete/'.$row['id'].'" class="btn btn-danger">delete</a>
+                  <a href="'.site_url("admin").'/roles/update/'.$row['id'].'" class="btn btn-info">view & edit</a>  
+                  <a href="'.site_url("admin").'/roles/delete/'.$row['id'].'" class="btn btn-danger">delete</a>
                 </td>';
                 echo '</tr>';
               }

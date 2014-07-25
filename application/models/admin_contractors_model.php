@@ -12,8 +12,8 @@ class Admin_contractors_model extends CI_Model {
      * @param array $data - associative array with data to store
      * @return boolean 
      */
-    function store_users($data) {
-        $insert = $this->db->insert('users', $data);
+    function store_contrators($data) {
+        $insert = $this->db->insert('contractor', $data);
         return $insert;
     }
 /**
@@ -22,10 +22,10 @@ class Admin_contractors_model extends CI_Model {
     * @param int $order
     * @return int
     */
-    function count_users($search_string=null, $order=null)
+    function count_contrators($search_string=null, $order=null)
     {
 		$this->db->select('*');
-		$this->db->from('users');
+		$this->db->from('contractors');
 		if($search_string){
 			$this->db->like('name', $search_string);
 		}
@@ -42,13 +42,14 @@ class Admin_contractors_model extends CI_Model {
     * @param int $product_id 
     * @return array
     */
-    public function get_project_by_id($id)
+    public function get_contractor_by_id($id)
     {
 		$this->db->select('*');
-		$this->db->from('users');
+		$this->db->from('contractor');
 		$this->db->where('id', $id);
 		$query = $this->db->get();
-		return $query->result_array(); 
+		
+                return $query->result_array(); 
     }    
 
  /**
@@ -61,40 +62,20 @@ class Admin_contractors_model extends CI_Model {
     * @param int $limit_end
     * @return array
     */
-    public function get_projects($search_string=null, $order=null, $order_type='Asc', $limit_start=null, $limit_end=null)
+    public function get_contractors()
     {
 	    
 		$this->db->select('*');
-		$this->db->from('users');
-
-		if($search_string){
-			$this->db->like('name', $search_string);
-		}
-		$this->db->group_by('id');
-
-		if($order){
-			$this->db->order_by($order, $order_type);
-		}else{
-		    $this->db->order_by('id', $order_type);
-		}
-
-        if($limit_start && $limit_end){
-          $this->db->limit($limit_start, $limit_end);	
-        }
-
-        if($limit_start != null){
-          $this->db->limit($limit_start, $limit_end);    
-        }
-        
+		$this->db->from('contractor');
 		$query = $this->db->get();
-		
-		return $query->result_array(); 	
+
+                return $query->result_array(); 	
     }
     
-    public function update_projects($id,$data_to_store){
+    public function update_contractors($id,$data_to_store){
         
         	$this->db->where('id', $id);
-		$this->db->update('users', $data_to_store);
+		$this->db->update('contractor', $data_to_store);
 		$report = array();
 		$report['error'] = $this->db->_error_number();
 		$report['message'] = $this->db->_error_message();
@@ -110,9 +91,9 @@ class Admin_contractors_model extends CI_Model {
     * @param int $id - manufacture id
     * @return boolean
     */
-   public function delete_project($id){
+   public function delete_contrator($id){
 		$this->db->where('id', $id);
-		$this->db->delete('users'); 
+		$this->db->delete('contractor'); 
 	}
 
 }
