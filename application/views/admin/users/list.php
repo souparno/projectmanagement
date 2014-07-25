@@ -28,21 +28,21 @@
             $attributes = array('class' => 'form-inline reset-margin', 'id' => 'myform');
            
             //save the columns names in a array that we will use as filter         
-            $options_manufacturers = array();    
-            foreach ($manufacturers as $array) {
+            $options_users = array();    
+            foreach ($users as $array) {
               foreach ($array as $key => $value) {
-                $options_manufacturers[$key] = $key;
+                $options_users[$key] = $key;
               }
               break;
             }
 
-            echo form_open('admin/manufacturers', $attributes);
+            echo form_open('admin/users', $attributes);
      
               echo form_label('Search:', 'search_string');
               echo form_input('search_string', $search_string_selected);
 
               echo form_label('Order by:', 'order');
-              echo form_dropdown('order', $options_manufacturers, $order, 'class="span2"');
+              echo form_dropdown('order', $options_users, $order, 'class="span2"');
 
               $data_submit = array('name' => 'mysubmit', 'class' => 'btn btn-primary', 'value' => 'Go');
 
@@ -60,19 +60,25 @@
             <thead>
               <tr>
                 <th class="header">#</th>
-                <th class="yellow header headerSortDown">Name</th>
+                <th class="yellow header headerSortDown">User Name</th>
+                <th class="yellow header headerSortDown"> First Name</th>
+                <th class="yellow header headerSortDown">Last Name</th>
+                <th class="yellow header headerSortDown">Email</th>
               </tr>
             </thead>
             <tbody>
               <?php
-              foreach($manufacturers as $row)
+              foreach($users as $row)
               {
                 echo '<tr>';
                 echo '<td>'.$row['id'].'</td>';
-                echo '<td>'.$row['name'].'</td>';
+                echo '<td>'.$row['username'].'</td>';
+                echo '<td>'.$row['first_name'].'</td>';
+                echo '<td>'.$row['last_name'].'</td>';
+                echo '<td>'.$row['email'].'</td>';
                 echo '<td class="crud-actions">
-                  <a href="'.site_url("admin").'/manufacturers/update/'.$row['id'].'" class="btn btn-info">view & edit</a>  
-                  <a href="'.site_url("admin").'/manufacturers/delete/'.$row['id'].'" class="btn btn-danger">delete</a>
+                  <a href="'.site_url("admin").'/users/update/'.$row['id'].'" class="btn btn-info">view & edit</a>  
+                  <a href="'.site_url("admin").'/users/delete/'.$row['id'].'" class="btn btn-danger">delete</a>
                 </td>';
                 echo '</tr>';
               }

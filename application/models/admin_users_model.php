@@ -6,43 +6,12 @@ class Admin_users_model extends CI_Model {
     {
         $this->load->database();
     }
-
-    /**
-     * Store the new item into the database
-     * @param array $data - associative array with data to store
-     * @return boolean 
-     */
-    function store_users($data) {
-        $insert = $this->db->insert('users', $data);
-        return $insert;
-    }
-/**
-    * Count the number of rows
-    * @param int $search_string
-    * @param int $order
-    * @return int
-    */
-    function count_users($search_string=null, $order=null)
-    {
-		$this->db->select('*');
-		$this->db->from('users');
-		if($search_string){
-			$this->db->like('name', $search_string);
-		}
-		if($order){
-			$this->db->order_by($order, 'Asc');
-		}else{
-		    $this->db->order_by('id', 'Asc');
-		}
-		$query = $this->db->get();
-		return $query->num_rows();        
-    }
     /**
     * Get product by his is
     * @param int $product_id 
     * @return array
     */
-    public function get_project_by_id($id)
+    public function get_user_by_id($id)
     {
 		$this->db->select('*');
 		$this->db->from('users');
@@ -51,8 +20,8 @@ class Admin_users_model extends CI_Model {
 		return $query->result_array(); 
     }    
 
- /**
-    * Fetch projects data from the database
+    /**
+    * Fetch manufacturers data from the database
     * possibility to mix search, filter and order
     * @param string $search_string 
     * @param strong $order
@@ -61,7 +30,7 @@ class Admin_users_model extends CI_Model {
     * @param int $limit_end
     * @return array
     */
-    public function get_projects($search_string=null, $order=null, $order_type='Asc', $limit_start=null, $limit_end=null)
+    public function get_users($search_string=null, $order=null, $order_type='Asc', $limit_start=null, $limit_end=null)
     {
 	    
 		$this->db->select('*');
@@ -90,11 +59,53 @@ class Admin_users_model extends CI_Model {
 		
 		return $query->result_array(); 	
     }
-    
-    public function update_projects($id,$data_to_store){
-        
-        	$this->db->where('id', $id);
-		$this->db->update('users', $data_to_store);
+
+    /**
+    * Count the number of rows
+    * @param int $search_string
+    * @param int $order
+    * @return int
+    */
+    function count_users($search_string=null, $order=null)
+    {
+		$this->db->select('*');
+		$this->db->from('users');
+		if($search_string){
+			$this->db->like('name', $search_string);
+		}
+		if($order){
+			$this->db->order_by($order, 'Asc');
+		}else{
+		    $this->db->order_by('id', 'Asc');
+		}
+		$query = $this->db->get();
+		return $query->num_rows();        
+    }
+
+    /**
+    * Store the new item into the database
+    * @param array $data - associative array with data to store
+    * @return boolean 
+    */
+
+    /**
+     * Store the new item into the database
+     * @param array $data - associative array with data to store
+     * @return boolean 
+     */
+    function store_users($data) {
+        $insert = $this->db->insert('users', $data);
+        return $insert;
+    }
+    /**
+    * Update manufacture
+    * @param array $data - associative array with data to store
+    * @return boolean
+    */
+    function update_user($id, $data)
+    {
+		$this->db->where('id', $id);
+		$this->db->update('users', $data);
 		$report = array();
 		$report['error'] = $this->db->_error_number();
 		$report['message'] = $this->db->_error_message();
@@ -103,14 +114,14 @@ class Admin_users_model extends CI_Model {
 		}else{
 			return false;
 		}
-       
-    }
+	}
+
     /**
     * Delete manufacturer
     * @param int $id - manufacture id
     * @return boolean
     */
-   public function delete_project($id){
+	function delete_user($id){
 		$this->db->where('id', $id);
 		$this->db->delete('users'); 
 	}
